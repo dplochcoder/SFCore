@@ -34,17 +34,12 @@ public class BlurPlanePatcher : MonoBehaviour
             _blurPlaneMaterials[0].SetInt(Shader.PropertyToID("_StencilReadMask"), 255);
         }
 
-        gameObject.SetActive(false);
-
-        var bp = gameObject.GetComponent<BlurPlane>();
-        if (bp == null)
-            bp = gameObject.AddComponent<BlurPlane>();
         var mr = gameObject.GetComponent<MeshRenderer>();
         mr.materials = _blurPlaneMaterials;
         mr.material = _blurPlaneMaterials[0];
-        bp.SetPlaneMaterial(mr.materials[0]);
-        bp.SetPlaneVisibility(true);
+        mr.sharedMaterial = _blurPlaneMaterials[0];
+        mr.enabled = true;
 
-        gameObject.SetActive(true);
+        if (gameObject.GetComponent<BlurPlane>() == null) gameObject.AddComponent<BlurPlane>();
     }
 }
