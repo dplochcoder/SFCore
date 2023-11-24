@@ -278,10 +278,10 @@ public class SceneManagerPatcher : MonoBehaviour
         Modding.Logger.Log($"SsSnapshotName: {SsSnapshotName}");
         sm.shadeSnapshot = _shadeAm.FindSnapshot(SsSnapshotName);
         sm.transitionTime = transitionTime;
-        sm.borderPrefab = GameObject.Find("SceneBorder");
+        sm.borderPrefab = Resources.Load("SceneBorder") as GameObject;
         sm.manualMapTrigger = manualMapTrigger;
-        sm.hollowShadeObject = GameObject.Find("Hollow Shade");
-        sm.dreamgateObject = GameObject.Find("dream_gate_object");
+        sm.hollowShadeObject = Resources.Load("Hollow Shade") as GameObject;
+        sm.dreamgateObject = Resources.Load("dream_gate_object") as GameObject;
 
         smGo.SetActive(true);
     }
